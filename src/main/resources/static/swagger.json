@@ -1,0 +1,1 @@
+{"apiVersion":"1.0","apis":[{"description":"Operations with student","path":"/default/student","position":0}],"authorizations":{},"info":{"description":"This API is for accessing student details.","title":"STUDENT DETAILS"},"swaggerVersion":"1.2"}

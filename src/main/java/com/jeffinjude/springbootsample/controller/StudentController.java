@@ -1,7 +1,6 @@
 package com.jeffinjude.springbootsample.controller;
 
 import java.net.HttpURLConnection;
-import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -33,7 +32,7 @@ public class StudentController {
 	/*STUDENT LIST****************************************************************************************************************************/
 	@RequestMapping(value="/student-list", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Get all student details",
-			notes = "This api operation fetches all the students details",
+			notes = "This api operation fetches all the students details.",
 			response = Students.class,
 			responseContainer = "List"
 		)
@@ -50,11 +49,11 @@ public class StudentController {
 	/*STUDENT DETAILS****************************************************************************************************************************/
 	@RequestMapping(value="/student-fetch/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Get specific student details",
-		notes = "This api operation fetches specific students details based on student id",
-		response = Students.class
+		notes = "This api operation fetches specific students details based on student id.",
+		response = Student.class
 	)
 	@ApiResponses(value = {
-	@ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Success. Returns details of a students", response = Students.class),
+	@ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Success. Returns details of a student", response = Student.class),
 	@ApiResponse(code = HttpURLConnection.HTTP_UNAUTHORIZED, message = "Unauthorized Access"),
 	@ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 	@ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems")
@@ -66,7 +65,7 @@ public class StudentController {
 	/*INSERT STUDENT****************************************************************************************************************************/
 	@RequestMapping(value="/student-insert/{id}", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ApiOperation(value = "Insert student details",
-		notes = "Provide student details in json format."
+		notes = "Provide student details in json format to insert it into the database."
 		)
 	@ApiResponses(value = {
 	    @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Success"),
@@ -91,14 +90,14 @@ public class StudentController {
 	    @ApiResponse(code = HttpURLConnection.HTTP_NOT_FOUND, message = "Not found"),
 	    @ApiResponse(code = HttpURLConnection.HTTP_INTERNAL_ERROR, message = "Internal server problems")
 	})
-	public void updateStudent(@ApiParam(value = "Details of student in Json format", required = true) @RequestBody Student student){
+	public void updateStudent(@ApiParam(value = "Details of student in Json format. Provide the correct existing student id of the student whose details need to be updated.", required = true) @RequestBody Student student){
         studentService.updateStudent(student);
     }
 	
 	/*DELETE STUDENT****************************************************************************************************************************/
 	@RequestMapping(value="/student-delete/{id}", method = RequestMethod.DELETE)
 	@ApiOperation(value = "Delete a student",
-	notes = "This api operation deletes student details of the given student id"
+	notes = "This api operation deletes student details of the given student id."
 	)
 	@ApiResponses(value = {
 	    @ApiResponse(code = HttpURLConnection.HTTP_OK, message = "Success"),
